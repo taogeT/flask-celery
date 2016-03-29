@@ -3,12 +3,14 @@
 Flask-Celery
 -------------
 
-Flask supports for Module Celery.
+Flask supports for Celery 3.0+ (Python3 version).
 
 """
 from setuptools import setup
 
-version = '0.0.1'
+import codecs
+
+version = '0.1.0'
 
 setup(
     name='Flask-Celery',
@@ -17,15 +19,14 @@ setup(
     license='MIT',
     author='Zheng Wentao',
     author_email='zwtzjd@gmail.com',
-    description='Celery 3.0+ integration for Flask',
-    long_description=__doc__,
+    description='Celery 3.0+ integration for Flask (Python 3 version)',
+    long_description=codecs.open('README.rst', 'r', 'utf-8').read(),
     py_modules=['flask_celery'],
     zip_safe=False,
     include_package_data=True,
     platforms='any',
     install_requires=[
         'Flask>=0.9',
-        'Flask-Script>=2.0.0',
         'Celery>=3.0.0',
     ],
     classifiers=[
@@ -36,10 +37,10 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
