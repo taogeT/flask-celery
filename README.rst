@@ -1,7 +1,8 @@
 =============================
 Flask Celery 3.0+ Integration
 =============================
-:Python:3.3+:Version:0.1.1
+:Python: 3.4+
+:Celery: 3.0.0+
 
 Celery: http://celeryproject.org
 
