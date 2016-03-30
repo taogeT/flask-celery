@@ -19,6 +19,8 @@ class Celery(_Celery):
 
     def init_app(self, app):
         self.conf.update(app.config)
+        if app.config.get('CELERY_BROKER_URL', None):
+            self.conf.update(broker=app.config['CELERY_BROKER_URL'])
         if not hasattr(app, 'extensions'):
             app.extensions = {}
         app.extensions['celery'] = _CeleryConfig(self)

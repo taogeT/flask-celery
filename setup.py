@@ -10,10 +10,10 @@ from setuptools import setup
 
 import codecs
 
-version = '0.1.0'
+version = '0.1.1'
 
 setup(
-    name='Flask-Celery',
+    name='Flask-Celery-py3',
     version=version,
     url='https://github.com/taogeT/flask-celery',
     license='MIT',
