@@ -6,9 +6,8 @@ Flask Celery 3.0+ Integration
 .. image:: https://img.shields.io/pypi/dd/Flask-Celery-py3.svg
     :target: https://pypi.python.org/pypi/Flask-Celery-py3/
 .. image:: https://img.shields.io/badge/wheel-yes-green.svg
-    :target: https://pypi.python.org/pypi/Flask-Celery-py3/
-.. image:: https:/img.shields.io/pypi/l/Flask-Celery-py3.svg
-    :target: https://pypi.python.org/pypi/Flask-Celery-py3/
+    :target: https://pypi.python.org/pypi/Flask-Celery-py3/.. image:: https://img.shields.io/pypi/l/Flask-Celery-py3.svg
+    :target: https://pypi.python.org/pypi/Flask-Celery-py3
 .. image:: https://img.shields.io/pypi/pyversions/Flask-Celery-py3.svg
     :target: https://pypi.python.org/pypi/Flask-Celery-py3/
 .. image:: https://img.shields.io/pypi/status/Flask-Celery-py3.svg
