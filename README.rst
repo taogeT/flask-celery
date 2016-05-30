@@ -3,7 +3,7 @@ Flask Celery 3.0+ Integration
 =============================
 .. image:: https://img.shields.io/pypi/v/Flask-Celery-py3.svg
     :target: https://pypi.python.org/pypi/Flask-Celery-py3/
-.. image:: https://img.shields.io/pypi/dd/Flask-Celery-py3.svg
+.. image:: https://img.shields.io/pypi/dm/Flask-Celery-py3.svg
     :target: https://pypi.python.org/pypi/Flask-Celery-py3/
 .. image:: https://img.shields.io/badge/wheel-yes-green.svg
     :target: https://pypi.python.org/pypi/Flask-Celery-py3/
