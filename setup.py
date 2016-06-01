@@ -10,7 +10,7 @@ from setuptools import setup
 
 import codecs
 
-version = '0.1.4'
+version = '0.2.1'
 
 setup(
     name='Flask-Celery-py3',
@@ -30,7 +30,7 @@ setup(
         'Celery>=3.0.0',
     ],
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Flask',
         'Intended Audience :: Developers',

@@ -1,19 +1,38 @@
 # -*- coding: UTF-8 -*-
 from celery import Celery as _Celery
+from celery.loaders.app import AppLoader
 
 __all__ = ['Celery']
 
 
 class Celery(_Celery):
 
+    loader_cls = 'flask_celery:FlaskLoader'
+
     def __init__(self, **kwargs):
         super(Celery, self).__init__(**kwargs)
-        if 'app' in kwargs:
-            self.init_app(kwargs['app'])
+        self.flask_app = None
 
-    def init_app(self, app):
-        self.conf.update(app.config)
-        if 'CELERY_BROKER_URL' in app.config:
-            self.conf.update(BROKER_URL=app.config['CELERY_BROKER_URL'])
-        if 'CELERY_ADMINS' in app.config:
-            self.conf.update(ADMINS=app.config['CELERY_ADMINS'])
+    def init_app(self, flask_app):
+        self.flask_app = flask_app
+        self.conf.update(self.flask_app.config)
+        if 'CELERY_BROKER_URL' in self.flask_app.config:
+            self.conf.update(BROKER_URL=self.flask_app.config['CELERY_BROKER_URL'])
+        if 'CELERY_ADMINS' in self.flask_app.config:
+            self.conf.update(ADMINS=self.flask_app.config['CELERY_ADMINS'])
+        self.autodiscover_tasks([self.flask_app.import_name])
+
+
+class FlaskLoader(AppLoader):
+
+    def __init__(self, app, **kwargs):
+        super(FlaskLoader, self).__init__(app, **kwargs)
+        self.flask_context = None
+
+    def on_task_init(self, task_id, task):
+        self.flask_context = self.app.flask_app.app_context()
+        self.flask_context.push()
+
+    def on_process_cleanup(self):
+        self.flask_context.pop()
+
