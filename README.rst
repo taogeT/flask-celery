@@ -21,7 +21,7 @@ You can easily add Celery to your flask application like this:
 
 ``app.py``::
 
-    from flask.ext.celery import Celery
+    from flask_celery import Celery
 
     celery = Celery()
 
@@ -40,3 +40,5 @@ To start the worker you can then launch the ``celery worker`` command
 by pointing to your ``celery`` app instance::
 
     $ celery -A app:celery worker -l info
+
+If your flask application has complex condition, you can refer to the example https://github.com/taogeT/flask-celery .

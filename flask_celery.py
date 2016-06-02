@@ -20,7 +20,8 @@ class Celery(_Celery):
             self.conf.update(BROKER_URL=self.flask_app.config['CELERY_BROKER_URL'])
         if 'CELERY_ADMINS' in self.flask_app.config:
             self.conf.update(ADMINS=self.flask_app.config['CELERY_ADMINS'])
-        self.autodiscover_tasks([self.flask_app.import_name])
+        blueprint_import = [iterbp.import_name for iterbp in self.flask_app.iter_blueprints()]
+        self.autodiscover_tasks([self.flask_app.import_name] + blueprint_import)
 
 
 class FlaskLoader(AppLoader):
@@ -35,4 +36,3 @@ class FlaskLoader(AppLoader):
 
     def on_process_cleanup(self):
         self.flask_context.pop()
-
