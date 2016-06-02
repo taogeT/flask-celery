@@ -10,7 +10,7 @@ from setuptools import setup
 
 import codecs
 
-version = '0.2.1'
+version = '0.2.2'
 
 setup(
     name='Flask-Celery-py3',
@@ -26,7 +26,7 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=[
-        'Flask>=0.9',
+        'Flask>=0.11',
         'Celery>=3.0.0',
     ],
     classifiers=[

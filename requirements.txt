@@ -1,2 +1,2 @@
-Flask>=0.9
+Flask>=0.11
 Celery>=3.0.0
