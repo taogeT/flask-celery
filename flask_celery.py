@@ -9,9 +9,9 @@ class Celery(_Celery):
 
     loader_cls = 'flask_celery:FlaskLoader'
 
-    def __init__(self, **kwargs):
-        super(Celery, self).__init__(**kwargs)
-        self.flask_app = None
+    def __init__(self, *args, **kwargs):
+        super(Celery, self).__init__(*args, **kwargs)
+        self.flask_app = kwargs.get('flask_app', None)
 
     def init_app(self, flask_app):
         self.flask_app = flask_app

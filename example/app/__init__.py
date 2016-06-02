@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_celery import Celery
 
-celery = Celery()
+celery = Celery(__name__)
 
 
 def create_app():
