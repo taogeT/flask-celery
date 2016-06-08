@@ -28,11 +28,11 @@ class FlaskLoader(AppLoader):
 
     def __init__(self, app, **kwargs):
         super(FlaskLoader, self).__init__(app, **kwargs)
-        self.flask_context = None
+        self.flask_request_context = None
 
     def on_task_init(self, task_id, task):
-        self.flask_context = self.app.flask_app.app_context()
-        self.flask_context.push()
+        self.flask_request_context = self.app.flask_app.test_request_context()
+        self.flask_request_context.push()
 
     def on_process_cleanup(self):
-        self.flask_context.pop()
+        self.flask_request_context.pop()
