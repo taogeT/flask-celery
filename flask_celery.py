@@ -16,10 +16,17 @@ class Celery(_Celery):
     def init_app(self, flask_app):
         self.flask_app = flask_app
         self.conf.update(self.flask_app.config)
-        if 'CELERY_BROKER_URL' in self.flask_app.config:
-            self.conf.update(BROKER_URL=self.flask_app.config['CELERY_BROKER_URL'])
-        if 'CELERY_ADMINS' in self.flask_app.config:
-            self.conf.update(ADMINS=self.flask_app.config['CELERY_ADMINS'])
+
+        self.conf.update(BROKER_URL=self.flask_app.config.get('CELERY_BROKER_URL', ''))
+        self.conf.update(ADMINS=self.flask_app.config.get('CELERY_ADMINS', ()))
+        self.conf.update(SERVER_EMAIL=self.flask_app.config.get('CELERY_ADMINS', ''))
+        self.conf.update(EMAIL_HOST=self.flask_app.config.get('CELERY_EMAIL_HOST', ''))
+        self.conf.update(EMAIL_HOST_USER=self.flask_app.config.get('CELERY_EMAIL_HOST_USER', ''))
+        self.conf.update(EMAIL_HOST_PASSWORD=self.flask_app.config.get('CELERY_EMAIL_HOST_PASSWORD', ''))
+        self.conf.update(EMAIL_PORT=self.flask_app.config.get('CELERY_EMAIL_PORT', 25))
+        self.conf.update(EMAIL_USE_SSL=self.flask_app.config.get('CELERY_EMAIL_USE_SSL', False))
+        self.conf.update(EMAIL_USE_TLS=self.flask_app.config.get('CELERY_EMAIL_USE_TLS', False))
+
         blueprint_import = [iterbp.import_name for iterbp in self.flask_app.iter_blueprints()]
         self.autodiscover_tasks([self.flask_app.import_name] + blueprint_import)
 
